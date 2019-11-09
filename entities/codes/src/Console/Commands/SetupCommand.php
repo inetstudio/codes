@@ -43,6 +43,11 @@ class SetupCommand extends BaseSetupCommand
                 'description' => 'Migration',
                 'command' => 'migrate',
             ],
+            [
+                'type' => 'artisan',
+                'description' => 'Create classifiers group',
+                'command' => 'inetstudio:codes-package:codes:classifiers_group',
+            ],
         ];
     }
 }

@@ -33,6 +33,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->commands(
             [
+                'InetStudio\CodesPackage\Codes\Console\Commands\CreateClassifiersGroupCommand',
                 'InetStudio\CodesPackage\Codes\Console\Commands\SetupCommand',
             ]
         );
