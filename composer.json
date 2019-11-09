@@ -1,0 +1,31 @@
+{
+  "name": "inetstudio/codes",
+  "description": "Package for codes",
+  "homepage": "https://github.com/inetstudio/codes",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Konstantin Bukin",
+      "email": "bukin@inetstudio.ru"
+    }
+  ],
+  "require": {
+    "inetstudio/admin-panel": "^6.0",
+    "inetstudio/classifiers": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "InetStudio\\CodesPackage\\": "package/src",
+      "InetStudio\\CodesPackage\\Codes\\": "entities/codes/src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "InetStudio\\CodesPackage\\Providers\\ServiceProvider",
+        "InetStudio\\CodesPackage\\Codes\\Providers\\BindingsServiceProvider",
+        "InetStudio\\CodesPackage\\Codes\\Providers\\ServiceProvider"
+      ]
+    }
+  }
+}
