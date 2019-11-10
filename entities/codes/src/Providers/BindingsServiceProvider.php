@@ -25,7 +25,6 @@ class BindingsServiceProvider extends BaseServiceProvider implements DeferrableP
         'InetStudio\CodesPackage\Codes\Contracts\Http\Responses\Back\Resource\IndexResponseContract' => 'InetStudio\CodesPackage\Codes\Http\Responses\Back\Resource\IndexResponse',
         'InetStudio\CodesPackage\Codes\Contracts\Http\Responses\Back\Resource\SaveResponseContract' => 'InetStudio\CodesPackage\Codes\Http\Responses\Back\Resource\SaveResponse',
         'InetStudio\CodesPackage\Codes\Contracts\Http\Responses\Back\Resource\ShowResponseContract' => 'InetStudio\CodesPackage\Codes\Http\Responses\Back\Resource\ShowResponse',
-        'InetStudio\CodesPackage\Codes\Contracts\Listeners\CodeActionListenerContract' => 'InetStudio\CodesPackage\Codes\Listeners\CodeActionListener',
         'InetStudio\CodesPackage\Codes\Contracts\Models\CodeModelContract' => 'InetStudio\CodesPackage\Codes\Models\CodeModel',
         'InetStudio\CodesPackage\Codes\Contracts\Services\Back\DataTables\IndexServiceContract' => 'InetStudio\CodesPackage\Codes\Services\Back\DataTables\IndexService',
         'InetStudio\CodesPackage\Codes\Contracts\Services\Back\ItemsServiceContract' => 'InetStudio\CodesPackage\Codes\Services\Back\ItemsService',
