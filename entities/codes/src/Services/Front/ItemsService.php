@@ -20,4 +20,41 @@ class ItemsService extends BaseService implements ItemsServiceContract
     {
         parent::__construct($model);
     }
+
+
+    public function redeem(string $code, int $userId)
+    {
+        $item = $this->model->where([
+            ['code', '=', $code],
+        ])->first();
+
+        if (! $item) {
+            return [
+                'message' => 'Код не найден',
+                'success' => false,
+            ];
+        }
+
+        if ($item->user_id != 0) {
+            return [
+                'message' => 'Данный код уже был использован',
+                'success' => false,
+            ];
+        }
+
+        $item->user_id = $userId;
+        $item->save();
+
+        event(
+            app()->make(
+                'InetStudio\CodesPackage\Codes\Contracts\Events\Front\RedeemItemEventContract',
+                compact('item')
+            )
+        );
+
+        return [
+            'message' => 'Код успешно использован',
+            'success' => true,
+        ];
+    }
 }

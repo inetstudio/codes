@@ -20,3 +20,14 @@ Route::group(
         );
     }
 );
+
+Route::group(
+    [
+        'namespace' => 'InetStudio\CodesPackage\Codes\Contracts\Http\Controllers\Front',
+        'middleware' => ['web', 'auth'],
+    ],
+    function () {
+        Route::post('codes/redeem', 'ItemsControllerContract@redeemItem')
+            ->name('front.codes.redeem');
+    }
+);
