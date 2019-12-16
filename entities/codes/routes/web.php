@@ -9,8 +9,11 @@ Route::group(
         'prefix' => 'back/codes-package',
     ],
     function () {
-        Route::any('codes-package/codes/data/index', 'DataControllerContract@getIndexData')
+        Route::any('codes/data/index', 'DataControllerContract@getIndexData')
             ->name('back.codes-package.codes.data.index');
+
+        Route::get('codes/export', 'ExportControllerContract@exportItems')
+            ->name('back.codes-package.codes.export');
 
         Route::resource(
             'codes', 'ResourceControllerContract',

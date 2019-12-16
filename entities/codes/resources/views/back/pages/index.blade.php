@@ -18,6 +18,9 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <a href="{{ route('back.codes-package.codes.create') }}" class="btn btn-sm btn-primary btn-lg">Добавить</a>
+                        <div class="ibox-tools">
+                            <a href="{{ route('back.codes-package.codes.export') }}" class="btn btn-primary btn-sm">Экспорт</a>
+                        </div>
                     </div>
                     <div class="ibox-content">
                         <div class="table-responsive">
