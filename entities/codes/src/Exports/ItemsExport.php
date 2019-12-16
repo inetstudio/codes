@@ -61,7 +61,7 @@ class ItemsExport implements ItemsExportContract, FromQuery, WithMapping, WithHe
     {
         return [
             $item->id,
-            $item->user->name,
+            $item->user->name ?? '',
             implode(', ', $item->classifiers->pluck('value')->toArray()),
             $item->code,
             Date::dateTimeToExcel($item->created_at),
@@ -91,6 +91,7 @@ class ItemsExport implements ItemsExportContract, FromQuery, WithMapping, WithHe
     {
         return [
             'A' => NumberFormat::FORMAT_NUMBER,
+            'D' => NumberFormat::FORMAT_TEXT,
             'E' => NumberFormat::FORMAT_DATE_DATETIME,
             'F' => NumberFormat::FORMAT_DATE_DATETIME,
         ];
