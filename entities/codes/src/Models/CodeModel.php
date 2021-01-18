@@ -6,6 +6,7 @@ use OwenIt\Auditing\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use InetStudio\ACL\Users\Models\Traits\HasUser;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use InetStudio\Classifiers\Models\Traits\HasClassifiers;
 use InetStudio\CodesPackage\Codes\Contracts\Models\CodeModelContract;
 use InetStudio\AdminPanel\Base\Models\Traits\Scopes\BuildQueryScopeTrait;
@@ -47,6 +48,8 @@ class CodeModel extends Model implements CodeModelContract
     protected $fillable = [
         'code',
         'user_id',
+        'codeable_type',
+        'codeable_id',
     ];
 
     /**
@@ -71,6 +74,8 @@ class CodeModel extends Model implements CodeModelContract
             'id',
             'code',
             'user_id',
+            'codeable_type',
+            'codeable_id',
         ];
 
         self::$buildQueryScopeDefaults['relations'] = [
@@ -111,6 +116,26 @@ class CodeModel extends Model implements CodeModelContract
     }
 
     /**
+     * Сеттер атрибута codeable_type.
+     *
+     * @param $value
+     */
+    public function setCodeableTypeAttribute($value)
+    {
+        $this->attributes['codeable_type'] = trim(strip_tags($value));
+    }
+
+    /**
+     * Сеттер атрибута codeable_id.
+     *
+     * @param $value
+     */
+    public function setCodeableIdAttribute($value)
+    {
+        $this->attributes['codeable_id'] = (int) trim(strip_tags($value));
+    }
+
+    /**
      * Геттер атрибута type.
      *
      * @return string
@@ -121,4 +146,14 @@ class CodeModel extends Model implements CodeModelContract
     }
 
     use HasUser;
+
+    /**
+     * Полиморфное отношение с остальными моделями.
+     *
+     * @return MorphTo
+     */
+    public function codeable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }

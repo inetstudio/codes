@@ -3,28 +3,21 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-/**
- * Class CreateCodesTables.
- */
 class CreateCodesTables extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
             $table->integer('user_id')->unsigned()->default(0)->index();
+            $table->string('codeable_type')->nullable();
+            $table->string('codeable_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::dropIfExists('codes');
